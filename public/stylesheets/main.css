@@ -59,3 +59,29 @@ p {
 #comet {
     display: none;
 }
+
+.lista {
+text-align: left;
+border-bottom: 1px solid #ccc;
+padding: 10px;
+font-family: verdana;
+margin: 0 auto;
+width: 780px;
+}
+.lista:nth-child(odd) {
+  background-color: #eee;
+  color: #00acee;
+}
+.lista:nth-child(even) {
+  background-color: #fff;
+  color: #00acee;
+}
+.lista span {
+  font-weight: bold;
+  padding-right: 10px;
+  text-transform: uppercase;
+}
+.lista strong {
+  size: 12px;
+  color: #454546;
+}
