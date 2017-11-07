@@ -10,14 +10,14 @@
 
 <script type="text/javascript" charset="utf-8">
 
-       if (!!window.EventSource) {
-         var source = new EventSource("@routes.Application.liveTweet()");
-         source.addEventListener('message', function(e) {
-            var d = JSON.parse(eval(e.data));
-            $('<div class="lista"><span>'+ d.user.name +'</span>- <strong>'+ d.text +'</strong></div>').appendTo('body');
-         });
-       } else {
-         $("#clock").html("Sorry. This browser doesn't seem to support Server sent event. Check <a href='http://html5test.com/compare/feature/communication-eventSource.html'>html5test</a> for browser compatibility."); 
-       }
+       <!--if (!!window.EventSource) {-->
+         <!--var source = new EventSource("routes.Application.liveTweet()");-->
+         <!--source.addEventListener('message', function(e) {-->
+            <!--var d = JSON.parse(eval(e.data));-->
+            <!--$('<div class="lista"><span>'+ d.user.name +'</span>- <strong>'+ d.text +'</strong></div>').appendTo('body');-->
+         <!--});-->
+       <!--} else {-->
+         <!--$("#clock").html("Sorry. This browser doesn't seem to support Server sent event. Check <a href='http://html5test.com/compare/feature/communication-eventSource.html'>html5test</a> for browser compatibility."); -->
+       <!--}-->
     </script>
 }
