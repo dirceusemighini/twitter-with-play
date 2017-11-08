@@ -1,6 +1,7 @@
 package listener;
 
 import akka.actor.ActorRef;
+import akka.http.javadsl.model.ContentType;
 import akka.util.ByteString;
 import play.Logger;
 import play.api.libs.Comet;
@@ -15,6 +16,7 @@ public class TwitterStreamListener {
     public StatusListener statusListener;
     public TwitterStream twitterStream;
     FilterQuery query;
+
     private void initStream() {
 
         configBuilder.setOAuthConsumerKey("s7Wf2E3uAq5gbQdWl7PMHDho9");
@@ -62,12 +64,15 @@ public class TwitterStreamListener {
                 Logger.info(status.getUser().getName());
 
                 StringBuilder mensagem = new StringBuilder();
+                try {
+                    mensagem.append(status.getUser().getName());
+                    mensagem.append(":");
+                    mensagem.append(new String(status.getText().getBytes(), "utf-8"));
+                    mensagem.append("\n");
+                } catch (Exception e) {
+                    e.printStackTrace();
 
-                mensagem.append(status.getUser().getName());
-                mensagem.append(":");
-                mensagem.append(status.getText());
-                mensagem.append("\n");
-
+                }
                 socketActor.tell(ByteString.fromString(mensagem.toString()),
                         ActorRef.noSender());
 
